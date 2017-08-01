@@ -1,9 +1,12 @@
 var express = require('express');
+
+//setting up the express js
 var app = express();
 
-app.get('/',function(req,res){
-	res.send('Hello world from server.js');
-});
+//use the static files
+app.use(express.static(__dirname + '/public'));
+
+
 
 app.listen(3000);
 console.log('server running');
