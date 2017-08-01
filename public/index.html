@@ -25,7 +25,14 @@
 				<th>Email</th>
 				<th>Number</th>
 			</tr>
-		</thead>		
+		</thead>	
+		<tbody>
+			<tr ng-repeat='contact in contacts'>
+				<td>{{contact.name}}</td>
+				<td>{{contact.email}}</td>
+				<td>{{contact.contact}}</td>
+			</tr>
+		</tbody>	
 	</table>
 </div>
 
