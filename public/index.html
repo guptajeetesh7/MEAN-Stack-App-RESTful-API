@@ -27,10 +27,19 @@
 			</tr>
 		</thead>	
 		<tbody>
-			<tr ng-repeat='contact in contacts'>
+
+			<tr>
+				<td><input type="text" ng-model="name" placeholder="Name" required="required" class="form-control"></td>
+				<td><input type="email" ng-model="email" placeholder="Email" required="required" class="form-control"></td>
+				<td><input type="text" ng-model="contact" placeholder="Contact No" required="required" class="form-control"></td>
+				<td><button class="btn btn-info" ng-click='Add()'>Add</button></td>
+			</tr>
+			<tr ng-repeat='contact in contacts '>
 				<td>{{contact.name}}</td>
 				<td>{{contact.email}}</td>
 				<td>{{contact.contact}}</td>
+				<td><button class="btn btn-info">Edit</button></td>
+				<td><button class="btn btn-danger">Delete</button></td>
 			</tr>
 		</tbody>	
 	</table>
