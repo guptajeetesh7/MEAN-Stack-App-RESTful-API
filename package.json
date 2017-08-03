@@ -4,7 +4,7 @@
   "description": "App Using Restful Api",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha",
     "start": "node server.js"
   },
   "author": "Jeetesh Gupta",
@@ -12,6 +12,7 @@
   "dependencies": {
     "body-parser": "^1.17.2",
     "express": "^4.15.3",
+    "mocha": "^3.4.2",
     "mongoose": "^4.11.5",
     "nodemon": "^1.11.0"
   }
