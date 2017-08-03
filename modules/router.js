@@ -4,6 +4,9 @@ var mongoose = require('mongoose');
 //change the Promise to global => ES6 Promise
 mongoose.Promise = global.Promise;
 
+//requring the Model 
+const Contact = require('../Schema/Schema');
+
 
 //connect to MongoDb Locally::
 mongoose.connect('mongodb://localhost/REST',{ useMongoClient: true });
@@ -13,6 +16,7 @@ mongoose.connect('mongodb://localhost/REST',{ useMongoClient: true });
 //checking the connection to the database
 mongoose.connection.once('open',function(){
 	console.log('Connection Has been made Succesfully!!');
+
 }).on('error',function(error){
 	console.log('Error to the connection :' + error);
 });
@@ -23,19 +27,12 @@ module.exports = function(app){
 
 		//IF get request is requested
 	app.get('/contactList',function(req,res){
+		//getting all the information from database
+		Contact.find({}).then(function(result){
+			console.log(result);
+			res.json(result);
+		});
 
-		person1 = {
-			name : 'Jeetesh Gupta',
-			email : 'gupta.jeetesh7@gmail.com',
-			contact: '222-222-222'
-		};
-
-		
-
-		var list = [person1];
-		res.json(list);
-
-		
 	});
 
 	app.post('/',function(rea,res){
@@ -43,3 +40,14 @@ module.exports = function(app){
 	});
 
 };
+
+
+// var person1 = new Contact({
+// 			name : 'Jeetesh Gupta',
+// 			email : 'gupta.jeetesh7@gmail.com',
+// 			contact: 01475233132
+// 		});
+
+// 		person1.save().then(function(){
+// 			console.log('Oh Yeah');
+// 		});
