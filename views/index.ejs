@@ -12,12 +12,19 @@
 	<!-- Latest compiled JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
+
+	<link type="text/css" href="./public/styles.css" rel="stylesheet">
+
+	<!-- Scripts needed to be added -->
+	<script type="text/javascript" src="public/controllers/main.js"></script>
 
 </head>
 <body>
 
 <div class="container">
-	<h1 class="text-center">Contact Lists</h1>	
+	<h1 class="text-center">Contact Lists</h1>
 	<table class="table" ng-controller='main'>
 		<thead>
 			<tr>
@@ -25,7 +32,7 @@
 				<th>Email</th>
 				<th>Number</th>
 			</tr>
-		</thead>	
+		</thead>
 		<tbody>
 
 			<tr>
@@ -41,12 +48,10 @@
 				<td><button class="btn btn-info">Edit</button></td>
 				<td><button class="btn btn-danger">Delete</button></td>
 			</tr>
-		</tbody>	
+		</tbody>
 	</table>
 </div>
 
-<!-- Scripts needed to be added -->
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
-<script type="text/javascript" src="controllers/main.js"></script>
+
 </body>
 </html>

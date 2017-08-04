@@ -1,10 +1,13 @@
 //Import mongoose library to use MongoDB
 var mongoose = require('mongoose');
 
+//adding the middleware to parse the body
+var bodyParser = require('body-parser')
+
 //change the Promise to global => ES6 Promise
 mongoose.Promise = global.Promise;
 
-//requring the Model 
+//requring the Model
 const Contact = require('../Schema/Schema');
 
 
@@ -22,6 +25,10 @@ mongoose.connection.once('open',function(){
 });
 
 
+//Assiging a variable to act as middleware
+var urlencodedParser = bodyParser.urlencoded({extended: false});
+
+
 //Exporting the module
 module.exports = function(app){
 
@@ -30,13 +37,15 @@ module.exports = function(app){
 		//getting all the information from database
 		Contact.find({}).then(function(result){
 			console.log(result);
-			res.json(result);
+			
+			res.render('index');
 		});
 
 	});
 
-	app.post('/',function(rea,res){
-		res.send({type:'POST'});
+	app.post('/contactList', urlencodedParser ,function(req,res){
+		console.log(req.body);
+		res.render('index');
 	});
 
 };
