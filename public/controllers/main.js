@@ -1,24 +1,26 @@
-var app = angular.module('MEAN',[]);
+var app = angular.module('MEAN',['ngRoute']);
 
-app.controller('main',function($scope,$http){
+app.controller('main',function($scope,$http,$route){
 
 	//getting the data
-	// $http.get('/contactList').then(function(response){
-	// 	console.log(response.data);
-	// 	$scope.contacts = response.data;
-	// });
-	//
-	//
-	// $scope.Add = function(){
-	// 	if($scope.name!=undefined && $scope.email!=undefined && $scope.contact!=undefined){
-	// 		$http.post('/contactList',{name : $scope.name , email : $scope.email ,  contact : $scope.contact}).then(function(response){
-	// 			alert('Added');
-	// 			console.log(response);
-	// 		});
-	// 	}else{
-	// 		alert("Please fill all feilds");
-	// 	}
-	// };
+	$http.get('/contactList').then(function(response){
+				$scope.contactList = response.data;
+				console.log(response.data);
+	});
 
-	alert('Hello');
+	$scope.Add = function(){
+		if($scope.name!=undefined && $scope.email!=undefined && $scope.number!=undefined){
+			$http.post('/contactList',{name : $scope.name , email : $scope.email , contact : $scope.number}).then(function(response){
+				alert("Added");
+				$scope.name = undefined;
+				$scope.email = undefined;
+				$scope.number = undefined;
+
+				});
+		}else{
+			alert("Please fill all feilds");
+		}
+	};
+
+
 });

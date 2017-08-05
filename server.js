@@ -10,12 +10,10 @@ var app = express();
 
 
 //use the static files
-app.use(express.static('./public/controllers'));
+app.use(express.static('./public'));
 
 //setting the view engine
 app.set('view engine','ejs');
-
-
 
 //RouteS
 routesController(app);

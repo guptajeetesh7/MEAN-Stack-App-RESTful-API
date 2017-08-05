@@ -2,13 +2,15 @@
 var mongoose = require('mongoose');
 
 //adding the middleware to parse the body
-var bodyParser = require('body-parser')
+var bodyParser = require('body-parser');
 
 //change the Promise to global => ES6 Promise
 mongoose.Promise = global.Promise;
 
 //requring the Model
 const Contact = require('../Schema/Schema');
+
+
 
 
 //connect to MongoDb Locally::
@@ -32,20 +34,29 @@ var urlencodedParser = bodyParser.urlencoded({extended: false});
 //Exporting the module
 module.exports = function(app){
 
+app.use(bodyParser.json());
+
+
+app.get('/',function(req,res){
+	res.render('index');
+});
 		//IF get request is requested
 	app.get('/contactList',function(req,res){
 		//getting all the information from database
 		Contact.find({}).then(function(result){
 			console.log(result);
-			
-			res.render('index');
+			res.json(result);
+
 		});
 
 	});
 
 	app.post('/contactList', urlencodedParser ,function(req,res){
 		console.log(req.body);
-		res.render('index');
+		var newContact = Contact(req.body).save().then(function(data){
+			res.json({task : 'Done'});
+		});
+
 	});
 
 };
