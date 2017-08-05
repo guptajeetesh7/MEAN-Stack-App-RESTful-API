@@ -55,19 +55,16 @@ app.get('/',function(req,res){
 		console.log(req.body);
 		var newContact = Contact(req.body).save().then(function(data){
 			res.json({task : 'Done'});
-		});
+			});
+
+	});
+
+	app.delete('/contactList/:id',function(req,res){
+		console.log(req.params.id);
+		Contact.findOneAndRemove({_id : req.params.id}).then(function(data){
+			res.json({type : 'DELETE'});
+		});		
 
 	});
 
 };
-
-
-// var person1 = new Contact({
-// 			name : 'Jeetesh Gupta',
-// 			email : 'gupta.jeetesh7@gmail.com',
-// 			contact: 01475233132
-// 		});
-
-// 		person1.save().then(function(){
-// 			console.log('Oh Yeah');
-// 		});
