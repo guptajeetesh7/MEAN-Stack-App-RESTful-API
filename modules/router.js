@@ -44,7 +44,7 @@ app.get('/',function(req,res){
 	app.get('/contactList',function(req,res){
 		//getting all the information from database
 		Contact.find({}).then(function(result){
-			console.log(result);
+			//console.log(result);
 			res.json(result);
 
 		});
@@ -63,8 +63,22 @@ app.get('/',function(req,res){
 		console.log(req.params.id);
 		Contact.findOneAndRemove({_id : req.params.id}).then(function(data){
 			res.json({type : 'DELETE'});
-		});		
-
+		});
 	});
 
+	app.put('/contactList',urlencodedParser,function(req,res){
+
+		//console.log(req.body);
+		Contact.findOneAndUpdate({_id : req.body.id},{
+			name : req.body.name,
+			email : req.body.email,
+			contact : req.body.contact
+		}).then(function(){
+			//console.log("done");
+			res.json({type:'Data'});
+
+		});
+		res.json({type: "Update"});
+
+	});
 };
