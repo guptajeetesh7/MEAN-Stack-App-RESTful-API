@@ -1,7 +1,7 @@
 # MEAN-Stack-App-RESTful-API
 Simple App based on MongoDB , Angular Js , Express and Node JS
 
-Steps To start the App:
+Steps To start the App: 
 
 1) Install all the depedencies by typing :
     npm install
